@@ -1,0 +1,109 @@
+{
+  "topbar": {
+    "home": "home",
+    "movies": "movies",
+    "tv series": "tv series",
+    "search": "tìm kiếm",
+    "sign_in": "đăng nhập",
+    "sign_up": "đăng ký"
+  },
+  "sidebar": {
+    "options": {
+      "options": "tùy chọn",
+      "home": "home",
+      "movies": "movies",
+      "tv series": "tv series",
+      "search": "tìm kiếm"
+    },
+    "theme": {
+      "theme": "màu nền",
+      "light": "nền sáng",
+      "dark": "nền tối"
+    },
+    "language": {
+      "language": "ngôn ngữ",
+      "english": "tiếng anh",
+      "vietnamese": "tiếng việt"
+    },
+    "personal": "cài đặt"
+  },
+  "user": {
+    "favorites": "yêu thích",
+    "reviews": "đánh giá",
+    "password update": "đổi mật khẩu",
+    "sign_out": "thoát"
+  },
+  "homepage": {
+    "popular_movies": "phim nổi bật",
+    "high_rate_movies": "được yêu thích",
+    "popular_show": "chương trình nổi bật",
+    "recommended_show": "được đề xuất"
+  },
+  "common": {
+    "watch_now": "xem ngay",
+    "see_more": "xem thêm",
+    "delete": "xóa"
+  },
+  "medialist": {
+    "movies": "phim",
+    "tv_series": "tv series",
+    "popular": "nổi bật",
+    "top_rated": "đánh giá cao"
+  },
+  "mediasearch": {
+    "movie": "phim",
+    "tv": "tv",
+    "people": "cá nhân",
+    "search_placeholder": "Nhập thông tin vào đây để tìm kiếm !",
+    "not_found": "Không tìm thấy!"
+  },
+  "mediadetail": {
+    "cast": "diễn viên",
+    "videos": "videos",
+    "backdrops": "bối cảnh",
+    "posters": "posters",
+    "reviews": "đánh giá",
+    "you_may_like": "bạn sẽ thích"
+  },
+  "mediareview": {
+    "delete": "xóa bỏ",
+    "mediareview_placeholder": "Chia sẻ cảm nhận của bạn",
+    "comment": "chia sẻ"
+  },
+  "persondetail": {
+    "movie": "phim tham gia"
+  },
+  "favoritelist": {
+    "your_favorites": "bạn đã thích"
+  },
+  "reviewlist": {
+    "your_reviews": "đánh giá của bạn",
+    "delete": "xóa bỏ"
+  },
+  "validation": {
+    "username_min": "Tên phải có ít nhất 5 ký tự",
+    "username_required": "Tên là bắt buộc",
+    "password_min": "Mật khẩu phải ít nhất 1 ký tự",
+    "password_required": "Mật khẩu là bắt buộc",
+    "displayName_min": "Tên phải có ít nhất 5 ký tự",
+    "displayName_required": "Tên là bắt buộc",
+    "confirmPassword_match": "Mật khẩu không khớp",
+    "confirmPassword_min": "Mật khẩu phải có ít nhất 1 ký tự",
+    "confirmPassword_required": "Mật khẩu là bắt buộc",
+    "newPassword_min": "Mật khẩu mới phải ít nhất 1 ký tự",
+    "newPassword_required": "Vui lòng nhập mật khẩu mới",
+    "confirmNewPassword_match": "Mật khẩu mới không khớp",
+    "confirmNewPassword_min": "Mật khẩu mới phải ít nhất 1 ký tự",
+    "confirmNewPassword_required": "Vui lòng nhập lại mật khẩu mới"
+  },
+  "update_password": "đổi mật khẩu",
+  "success": {
+    "add_favorite": "Thêm vào yêu thích thành công",
+    "delete_favorite": "Xóa khỏi yêu thích thành công",
+    "add_comment": "Bình luận thành công",
+    "delete_comment": "Xóa bình luận thành công",
+    "sign_in": "Đăng nhập thành công",
+    "sign_up": "Đăng ký thành công"
+  },
+  "please_login": "Hãy đăng nhập để xem phần này"
+}

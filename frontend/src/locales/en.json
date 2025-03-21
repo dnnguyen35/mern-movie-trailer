@@ -1,0 +1,109 @@
+{
+  "topbar": {
+    "home": "home",
+    "movies": "movies",
+    "tv series": "tv series",
+    "search": "search",
+    "sign_in": "sign in",
+    "sign_up": "sign up"
+  },
+  "sidebar": {
+    "options": {
+      "options": "options",
+      "home": "home",
+      "movies": "movies",
+      "tv series": "tv series",
+      "search": "search"
+    },
+    "theme": {
+      "theme": "theme",
+      "light": "light mode",
+      "dark": "dark mode"
+    },
+    "language": {
+      "language": "language",
+      "english": "english",
+      "vietnamese": "vietnamese"
+    },
+    "personal": "setting"
+  },
+  "user": {
+    "favorites": "favorites",
+    "reviews": "reviews",
+    "password update": "password update",
+    "sign_out": "sign out"
+  },
+  "homepage": {
+    "popular_movies": "popular movies",
+    "high_rate_movies": "high rate movies",
+    "popular_show": "popular show",
+    "recommended_show": "recommended show"
+  },
+  "common": {
+    "watch_now": "watch now",
+    "see_more": "see more",
+    "delete": "delete"
+  },
+  "medialist": {
+    "movies": "movies",
+    "tv_series": "tv series",
+    "popular": "popular",
+    "top_rated": "top rated"
+  },
+  "mediasearch": {
+    "movie": "movie",
+    "tv": "tv",
+    "people": "people",
+    "search_placeholder": "Please type here to search !",
+    "not_found": "Ooppp not found!"
+  },
+  "mediadetail": {
+    "cast": "cast",
+    "videos": "videos",
+    "backdrops": "backdrops",
+    "posters": "posters",
+    "reviews": "reviews",
+    "you_may_like": "you may like"
+  },
+  "mediareview": {
+    "delete": "delete",
+    "mediareview_placeholder": "Share your feeling",
+    "comment": "comment"
+  },
+  "persondetail": {
+    "movie": "movies"
+  },
+  "favoritelist": {
+    "your_favorites": "your favotites"
+  },
+  "reviewlist": {
+    "your_reviews": "your reviews",
+    "delete": "delete"
+  },
+  "validation": {
+    "username_min": "Username must have at least 5 characters",
+    "username_required": "Username is required",
+    "password_min": "Password must have at least 1 character",
+    "password_required": "Password is required",
+    "displayName_min": "DisplayName must have at least 5 characters",
+    "displayName_required": "DisplayName is required",
+    "confirmPassword_match": "ConfirmPassword does not match",
+    "confirmPassword_min": "ConfirmPassword must have at least 1 character",
+    "confirmPassword_required": "ConfirmPassword is required",
+    "newPassword_min": "NewPassword must have at least 1 character",
+    "newPassword_required": "NewPassword is required",
+    "confirmNewPassword_match": "Confirm New Password does not match",
+    "confirmNewPassword_min": "NewPassword must have at least 1 character",
+    "confirmNewPassword_required": "NewPassword is required"
+  },
+  "update_password": "update password",
+  "success": {
+    "add_favorite": "Add favorite successfully",
+    "delete_favorite": "Delete favorite successfully",
+    "add_comment": "Comment successfully",
+    "delete_comment": "Delete comment successfully",
+    "sign_in": "Sign in successfully",
+    "sign_up": "Sign up successfully"
+  },
+  "please_login": "Please login to see this content"
+}
