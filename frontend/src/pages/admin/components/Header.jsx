@@ -1,0 +1,49 @@
+import { AppBar, Toolbar, Typography, Box, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import TextAvatar from "../../../components/common/TextAvatar";
+
+const Header = () => {
+  return (
+    <AppBar
+      position="static"
+      color="transparent"
+      sx={{ boxShadow: "none", mb: 4, marginTop: "3rem" }}
+    >
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {/* Logo & Title */}
+        <Box display="flex" alignItems="center" gap={2}>
+          <Link component={RouterLink} to="/" underline="none">
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              sx={{
+                background:
+                  "linear-gradient(to right, #4ade80, #22d3ee, #3b82f6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },
+              }}
+            >
+              phimCuaToi
+            </Typography>
+          </Link>
+
+          {/* Chỉ hiển thị `Music Manager` khi màn hình >= md */}
+          <Box sx={{ display: { xs: "block", md: "block" } }}>
+            <Typography variant="h4" fontWeight="bold">
+              Manager
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Manage your application
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* User Button */}
+        <TextAvatar text={"ronaldo"} />
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default Header;
