@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema(
       default: false,
       required: true,
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+      required: true,
+    },
   },
   modelOptions
 );

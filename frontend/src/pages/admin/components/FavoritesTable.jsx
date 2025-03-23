@@ -7,43 +7,48 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-
-const favorites = [
-  {
-    id: "67d16f8befc06692a043df28",
-    user: "hello",
-    mediaTitle: "The Gorge",
-    mediaRate: 7.8,
-    createdAt: "2025-03-12",
-  },
-  {
-    id: "67dd095a4e0fabb05debb005",
-    user: "hello",
-    mediaTitle: "Sonic the Hedgehog 3",
-    mediaRate: 7.753,
-    createdAt: "2025-03-21",
-  },
-];
+import adminApi from "../../../api/modules/admin.api";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const FavoritesTable = () => {
+  const [listFavorites, setListFavorites] = useState([]);
+
+  useEffect(() => {
+    const getMoviesStats = async () => {
+      const { response, error } = await adminApi.getMoviesStats();
+
+      if (response) setListFavorites(response);
+      if (error) toast.error(error.message);
+    };
+
+    getMoviesStats();
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>User</TableCell>
-            <TableCell>Movie Title</TableCell>
-            <TableCell>Rating</TableCell>
-            <TableCell>Created At</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Media ID</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Movie Title</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Total Reviews</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Average Rating</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>
+              Total Favorites
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {favorites.map((fav) => (
-            <TableRow key={fav.id}>
-              <TableCell>{fav.user}</TableCell>
-              <TableCell>{fav.mediaTitle}</TableCell>
-              <TableCell>{fav.mediaRate}</TableCell>
-              <TableCell>{fav.createdAt}</TableCell>
+          {listFavorites.map((favorite) => (
+            <TableRow key={favorite.mediaId}>
+              <TableCell>{favorite.mediaId}</TableCell>
+              <TableCell>{favorite.mediaTitle}</TableCell>
+              <TableCell>{favorite.totalReviews}</TableCell>
+              <TableCell>
+                {favorite.mediaRate ? favorite.mediaRate.toFixed(1) : "N/A"}
+              </TableCell>
+              <TableCell>{favorite.totalFavorites}</TableCell>
             </TableRow>
           ))}
         </TableBody>

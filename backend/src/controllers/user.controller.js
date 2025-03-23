@@ -25,6 +25,10 @@ const signup = async (req, res) => {
       { expiresIn: "24h" }
     );
 
+    user.password = undefined;
+    user.salt = undefined;
+    user.isActive = undefined;
+
     responseHandler.created(res, {
       token,
       ...user._doc,
@@ -41,12 +45,18 @@ const signin = async (req, res) => {
 
     const user = await userModel
       .findOne({ username })
-      .select("username password salt id displayName");
+      .select("username password salt id displayName isAdmin isActive");
 
     if (!user) return responseHandler.badrequest(res, "User not exist");
 
     if (!user.validPassword(password))
       return responseHandler.badrequest(res, "Password not correct");
+
+    if (!user.isActive)
+      return responseHandler.badrequest(
+        res,
+        "Your account is currently locked"
+      );
 
     const token = jsonwebtoken.sign(
       { data: user.id },
@@ -56,6 +66,7 @@ const signin = async (req, res) => {
 
     user.password = undefined;
     user.salt = undefined;
+    user.isActive = undefined;
 
     responseHandler.created(res, {
       token,

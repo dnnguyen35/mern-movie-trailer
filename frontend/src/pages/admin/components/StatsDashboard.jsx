@@ -4,25 +4,25 @@ import PeopleIcon from "@mui/icons-material/People";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const statsData = [
-  {
-    icon: <PeopleIcon fontSize="large" color="primary" />,
-    label: "Total Users",
-    value: "7",
-  },
-  {
-    icon: <RateReviewIcon fontSize="large" color="secondary" />,
-    label: "Total Reviews",
-    value: "15",
-  },
-  {
-    icon: <FavoriteIcon fontSize="large" color="error" />,
-    label: "Total Favorites",
-    value: "23",
-  },
-];
+const StatsDashboard = ({ totalUsers, totalReviews, totalFavorites }) => {
+  const statsData = [
+    {
+      icon: <PeopleIcon fontSize="large" color="primary" />,
+      label: "Total Users",
+      value: "7",
+    },
+    {
+      icon: <RateReviewIcon fontSize="large" color="secondary" />,
+      label: "Total Reviews",
+      value: "15",
+    },
+    {
+      icon: <FavoriteIcon fontSize="large" color="error" />,
+      label: "Total Favorites",
+      value: "23",
+    },
+  ];
 
-const StatsDashboard = () => {
   return (
     <Box
       sx={{

@@ -6,44 +6,69 @@ import {
   TableHead,
   TableRow,
   Paper,
+  IconButton,
 } from "@mui/material";
-
-const reviews = [
-  {
-    id: "67c9872a1a112ffa8f3aaf62",
-    user: "hello",
-    content: "first review",
-    mediaTitle: "Mufasa: The Lion King",
-    createdAt: "2025-03-06",
-  },
-  {
-    id: "67daa06fc525d17ff1b95ca5",
-    user: "hello",
-    content: "mau dua het tien day",
-    mediaTitle: "Mufasa: Vua Sư Tử",
-    createdAt: "2025-03-19",
-  },
-];
+import { Delete as DeleteIcon } from "@mui/icons-material";
+import adminApi from "../../../api/modules/admin.api";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const ReviewsTable = () => {
+  const [listReviews, setListReviews] = useState([]);
+
+  useEffect(() => {
+    const getReviewsStats = async () => {
+      const { response, error } = await adminApi.getReviewsStats();
+
+      if (response) setListReviews(response);
+      if (error) toast.error(error.message);
+    };
+
+    getReviewsStats();
+  }, []);
+
+  const handleDeleteReview = async (reviewId) => {
+    // const { response, error } = await adminApi.deleteReview(reviewId);
+
+    // if (response) {
+    //   toast.success("Review deleted successfully");
+    //   setListReviews(listReviews.filter((review) => review.id !== reviewId));
+    // }
+
+    // if (error) toast.error(error.message);
+    console.log("deleted :", reviewId);
+    setListReviews(listReviews.filter((review) => review.id !== reviewId));
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>User</TableCell>
-            <TableCell>Content</TableCell>
-            <TableCell>Movie Title</TableCell>
-            <TableCell>Created At</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>User</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Content</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Movie Title</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Created At</TableCell>
+            <TableCell sx={{ color: "primary.main" }}>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {reviews.map((review) => (
+          {listReviews.map((review) => (
             <TableRow key={review.id}>
-              <TableCell>{review.user}</TableCell>
+              <TableCell>{review.user.username}</TableCell>
               <TableCell>{review.content}</TableCell>
               <TableCell>{review.mediaTitle}</TableCell>
-              <TableCell>{review.createdAt}</TableCell>
+              <TableCell>
+                {new Date(review.createdAt).toLocaleDateString()}
+              </TableCell>
+              <TableCell>
+                <IconButton
+                  onClick={() => handleDeleteReview(review.id)}
+                  color="error"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

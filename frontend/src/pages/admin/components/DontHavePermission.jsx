@@ -1,11 +1,8 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setAuthModalOpen } from "../../redux/features/authModalSlice";
-import { Box, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { Box, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const PleaseLogin = () => {
-  const { t } = useTranslation();
+const DontHavePermission = () => {
+  const navigate = useNavigate();
 
   return (
     <Box position="relative" sx={{ marginTop: "7rem" }}>
@@ -34,23 +31,19 @@ const PleaseLogin = () => {
             display: "inline-block",
           }}
         >
-          {t("please_login")}
+          You don't have admin permission !
         </Typography>
+
+        <Button
+          variant="contained"
+          sx={{ mt: 3, px: 4, fontSize: "1rem", textTransform: "none" }}
+          onClick={() => navigate("/")}
+        >
+          Back to Home
+        </Button>
       </Box>
     </Box>
   );
 };
 
-const ProtectedPage = ({ children }) => {
-  const dispatch = useDispatch();
-
-  const { user } = useSelector((state) => state.user);
-
-  useEffect(() => {
-    dispatch(setAuthModalOpen(!user));
-  }, [user, dispatch]);
-
-  return user ? children : <PleaseLogin />;
-};
-
-export default ProtectedPage;
+export default DontHavePermission;

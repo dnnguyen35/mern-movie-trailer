@@ -31,4 +31,11 @@ const auth = async (req, res, next) => {
   next();
 };
 
-export default { tokenDecode, auth };
+const checkAdmin = (req, res, next) => {
+  if (!req.user || !req.user.isAdmin) {
+    return responseHandler.badrequest(res, "Access denied , Sorry admin only!");
+  }
+  next();
+};
+
+export default { tokenDecode, auth, checkAdmin };

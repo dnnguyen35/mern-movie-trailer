@@ -6,44 +6,72 @@ import {
   TableHead,
   TableRow,
   Paper,
+  IconButton,
 } from "@mui/material";
-
-const users = [
-  {
-    id: "67bf42333c7f63582862fd2e",
-    displayName: "hello",
-    username: "hello",
-    isAdmin: true,
-    createdAt: "2025-02-26",
-  },
-  {
-    id: "67dd26f7c8037f14b66c093c",
-    displayName: "hehehe",
-    username: "hehehe",
-    isAdmin: false,
-    createdAt: "2025-03-21",
-  },
-];
+import { Lock, LockOpen } from "@mui/icons-material";
+import adminApi from "../../../api/modules/admin.api";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const UsersTable = () => {
+  const [listUsers, setListUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsersStats = async () => {
+      const { response, error } = await adminApi.getUsersStats();
+
+      if (response) setListUsers(response);
+      if (error) toast.error(error.message);
+    };
+
+    getUsersStats();
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Display Name</TableCell>
-            <TableCell>Username</TableCell>
-            <TableCell>Admin</TableCell>
-            <TableCell>Created At</TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Display Name
+            </TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Username
+            </TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Created At
+            </TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Total Reviews
+            </TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Total Favorites
+            </TableCell>
+            <TableCell sx={{ color: "primary.main", fontWeight: "bold" }}>
+              Actions
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user) => (
+          {listUsers.map((user) => (
             <TableRow key={user.id}>
               <TableCell>{user.displayName}</TableCell>
               <TableCell>{user.username}</TableCell>
-              <TableCell>{user.isAdmin ? "Yes" : "No"}</TableCell>
-              <TableCell>{user.createdAt}</TableCell>
+              <TableCell>
+                {new Date(user.createdAt).toLocaleDateString()}
+              </TableCell>
+              <TableCell>{user.totalReviews}</TableCell>
+              <TableCell>{user.totalFavorites}</TableCell>
+              <TableCell>
+                <IconButton
+                  onClick={() =>
+                    console.log(`Toggle lock for ${user.username}`)
+                  }
+                  color={user.isActive ? "success" : "error"}
+                >
+                  {user.isActive ? <LockOpen /> : <Lock />}
+                </IconButton>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
