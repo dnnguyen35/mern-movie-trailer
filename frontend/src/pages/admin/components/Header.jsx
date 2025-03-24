@@ -2,7 +2,7 @@ import { AppBar, Toolbar, Typography, Box, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import TextAvatar from "../../../components/common/TextAvatar";
 
-const Header = () => {
+const Header = ({ displayName }) => {
   return (
     <AppBar
       position="static"
@@ -10,7 +10,6 @@ const Header = () => {
       sx={{ boxShadow: "none", mb: 4, marginTop: "3rem" }}
     >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo & Title */}
         <Box display="flex" alignItems="center" gap={2}>
           <Link component={RouterLink} to="/" underline="none">
             <Typography
@@ -24,23 +23,21 @@ const Header = () => {
                 fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },
               }}
             >
-              phimCuaToi
+              phimCủaTôi
             </Typography>
           </Link>
 
-          {/* Chỉ hiển thị `Music Manager` khi màn hình >= md */}
           <Box sx={{ display: { xs: "block", md: "block" } }}>
             <Typography variant="h4" fontWeight="bold">
               Manager
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Manage your application
+              Cristiano Ronaldo is my goattttttt, love youuuuu
             </Typography>
           </Box>
         </Box>
 
-        {/* User Button */}
-        <TextAvatar text={"ronaldo"} />
+        <TextAvatar text={displayName} />
       </Toolbar>
     </AppBar>
   );

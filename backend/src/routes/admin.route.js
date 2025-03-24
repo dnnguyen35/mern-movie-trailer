@@ -25,4 +25,25 @@ router.get(
   adminController.getAllMoviesWithStats
 );
 
+router.delete(
+  "/remove-user-review/:reviewId",
+  tokenMiddleware.auth,
+  tokenMiddleware.checkAdmin,
+  adminController.removeUserReview
+);
+
+router.put(
+  "/lock-user/:userId",
+  tokenMiddleware.auth,
+  tokenMiddleware.checkAdmin,
+  adminController.lockedUser
+);
+
+router.put(
+  "/unlock-user/:userId",
+  tokenMiddleware.auth,
+  tokenMiddleware.checkAdmin,
+  adminController.unLockedUser
+);
+
 export default router;

@@ -64,10 +64,23 @@ const getAllMoviesWithStats = async (req, res) => {
         $group: {
           _id: {
             mediaId: "$mediaId",
-            mediaTitle: "$mediaTitle",
           },
-          totalReviews: { $sum: 1 },
+          mediaTitle: { $first: "$mediaTitle" },
+
           mediaRate: { $avg: "$mediaRate" },
+        },
+      },
+      {
+        $lookup: {
+          from: "reviews",
+          localField: "_id.mediaId",
+          foreignField: "mediaId",
+          as: "reviews",
+        },
+      },
+      {
+        $addFields: {
+          totalReviews: { $size: "$reviews" },
         },
       },
       {
@@ -87,7 +100,7 @@ const getAllMoviesWithStats = async (req, res) => {
         $project: {
           _id: 0,
           mediaId: "$_id.mediaId",
-          mediaTitle: "$_id.mediaTitle",
+          mediaTitle: 1,
           mediaRate: 1,
           totalReviews: 1,
           totalFavorites: 1,
@@ -102,8 +115,70 @@ const getAllMoviesWithStats = async (req, res) => {
   }
 };
 
+const lockedUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await userModel.findById(userId);
+
+    if (!user) return responseHandler.notfound(res);
+
+    if (!user.isActive) return responseHandler.ok(res);
+
+    user.isActive = false;
+
+    await user.save();
+
+    responseHandler.ok(res);
+  } catch (error) {
+    console.log("error", error);
+    responseHandler.error(res);
+  }
+};
+
+const unLockedUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await userModel.findById(userId);
+
+    if (!user) return responseHandler.notfound(res);
+
+    if (user.isActive) return responseHandler.ok(res);
+
+    user.isActive = true;
+
+    await user.save();
+
+    responseHandler.ok(res);
+  } catch (error) {
+    console.log("error", error);
+    responseHandler.error(res);
+  }
+};
+
+const removeUserReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+
+    const review = await reviewModel.findById(reviewId);
+
+    if (!review) return responseHandler.notfound(res);
+
+    await review.deleteOne();
+
+    responseHandler.ok(res);
+  } catch (error) {
+    console.log("error", error);
+    responseHandler.error(res);
+  }
+};
+
 export default {
   getAllUsersWithStats,
   getAllReviews,
   getAllMoviesWithStats,
+  lockedUser,
+  unLockedUser,
+  removeUserReview,
 };

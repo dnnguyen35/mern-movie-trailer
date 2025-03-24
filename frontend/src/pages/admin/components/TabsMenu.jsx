@@ -8,7 +8,19 @@ import UsersTable from "./UsersTable";
 import ReviewsTable from "./ReviewsTable";
 import FavoritesTable from "./FavoritesTable";
 
-const TabsMenu = () => {
+const tabsData = [
+  { icon: <PeopleIcon />, label: "Users", component: <UsersTable /> },
+  { icon: <RateReviewIcon />, label: "Reviews", component: <ReviewsTable /> },
+  { icon: <FavoriteIcon />, label: "Favorites", component: <FavoritesTable /> },
+];
+
+const TabsMenu = ({
+  onTotalReviewsChange,
+  listUsersData,
+  listReviewsData,
+  listFavoritesData,
+  isLoading,
+}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (_event, newValue) => {
@@ -35,37 +47,33 @@ const TabsMenu = () => {
           "& .MuiTabs-indicator": { display: "none" },
         }}
       >
-        <Tab
-          icon={<PeopleIcon />}
-          label="Users"
-          sx={{
-            color: "white",
-            "&.Mui-selected": { bgcolor: "grey.800", borderRadius: 1 },
-          }}
-        />
-        <Tab
-          icon={<RateReviewIcon />}
-          label="Reviews"
-          sx={{
-            color: "white",
-            "&.Mui-selected": { bgcolor: "grey.800", borderRadius: 1 },
-          }}
-        />
-        <Tab
-          icon={<FavoriteIcon />}
-          label="Favorites"
-          sx={{
-            color: "white",
-            "&.Mui-selected": { bgcolor: "grey.800", borderRadius: 1 },
-          }}
-        />
+        {tabsData.map((tab, index) => (
+          <Tab
+            key={index}
+            icon={tab.icon}
+            label={tab.label}
+            sx={{
+              color: "white",
+              "&.Mui-selected": { bgcolor: "grey.800", borderRadius: 1 },
+            }}
+          />
+        ))}
       </Tabs>
 
       {/* Tabs Content */}
       <Box sx={{ mt: 2 }}>
-        {value === 0 && <UsersTable />}
-        {value === 1 && <ReviewsTable />}
-        {value === 2 && <FavoritesTable />}
+        {value === 0 && (
+          <UsersTable listUsersData={listUsersData} isLoading={isLoading} />
+        )}
+        {value === 1 && (
+          <ReviewsTable
+            onTotalReviewsChange={onTotalReviewsChange}
+            listReviewsData={listReviewsData}
+          />
+        )}
+        {value === 2 && (
+          <FavoritesTable listFavoritesData={listFavoritesData} />
+        )}
       </Box>
     </Box>
   );

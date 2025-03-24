@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import {
   AppBar,
   Box,
@@ -136,8 +138,25 @@ const Topbar = () => {
                   {t("topbar.sign_in")}
                 </Button>
               )}
+              {user && user?.isAdmin ? (
+                <Link to="/admin" style={{ textDecoration: "none" }}>
+                  <IconButton sx={{ color: "primary.main" }}>
+                    <SettingsOutlinedIcon />
+                  </IconButton>
+                </Link>
+              ) : null}
+              {user && <UserMenu />}
             </Stack>
-            {user && <UserMenu />}
+
+            {/* {user &&
+              user?.isAdmin(
+                <Link to="/admin" style={{ textDecoration: "none" }}>
+                  <IconButton sx={{ color: "inherit" }}>
+                    <SettingsOutlinedIcon />
+                  </IconButton>
+                </Link>
+              )}
+            {user && <UserMenu />} */}
             {/* user menu */}
           </Toolbar>
         </AppBar>

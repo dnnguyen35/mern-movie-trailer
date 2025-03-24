@@ -9,17 +9,17 @@ const StatsDashboard = ({ totalUsers, totalReviews, totalFavorites }) => {
     {
       icon: <PeopleIcon fontSize="large" color="primary" />,
       label: "Total Users",
-      value: "7",
+      value: totalUsers,
     },
     {
       icon: <RateReviewIcon fontSize="large" color="secondary" />,
       label: "Total Reviews",
-      value: "15",
+      value: totalReviews,
     },
     {
       icon: <FavoriteIcon fontSize="large" color="error" />,
       label: "Total Favorites",
-      value: "23",
+      value: totalFavorites,
     },
   ];
 

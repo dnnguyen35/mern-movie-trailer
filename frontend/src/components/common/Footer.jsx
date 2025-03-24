@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <Paper
       square={true}
-      sx={{ backgroundImage: "unset", padding: "2rem", marginTop: "2rem" }}
+      sx={{ backgroundImage: "unset", padding: "2rem", marginTop: "11rem" }}
     >
       <Box
         sx={{
@@ -71,7 +71,7 @@ const Footer = () => {
         {/* Copyright */}
         <Box mt={3}>
           <Typography variant="body2" fontSize={12}>
-            © 2025 dnnguyen - All intellectual property rights reserved
+            © 2025 dnnguyen - Sài Gòn - Việt Nam
           </Typography>
         </Box>
       </Box>
