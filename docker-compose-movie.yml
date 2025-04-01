@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend
     ports:
-      - "5001:50001"
+      - "5001:5001"
     networks:
       - movie-app-network
 
