@@ -27,5 +27,5 @@ jobs:
             cd /home/${{ secrets.EC2_USER }}/mern-movie-trailer/
             git pull origin main
             sudo docker-compose -f docker-compose-movie.yml down --volumes --rmi all
-            sudo docker-compose -f docker-compose-movie.yml system prune -af
+            sudo docker system prune -af
             sudo docker-compose -f docker-compose-movie.yml up -d --build
