@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 import store from "../../redux/store";
 
-const baseURL = "https://mern-movie-trailer.onrender.com/api/v1";
+const baseURL = process.env.REACT_APP_API_URL;
 
 const publicClient = axios.create({
   baseURL,

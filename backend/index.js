@@ -25,7 +25,7 @@ app.get("/babyy", (req, res) => {
 
 app.use("/api/v1", routes);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 const server = http.createServer(app);
 

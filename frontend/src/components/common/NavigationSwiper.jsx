@@ -29,6 +29,7 @@ const NavigationSwiper = ({ children }) => {
       <Swiper
         spaceBetween={10}
         grabCursor={true}
+        loop={true}
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Navigation, Pagination]}

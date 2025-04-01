@@ -105,5 +105,12 @@
     "sign_in": "Sign in successfully",
     "sign_up": "Sign up successfully"
   },
-  "please_login": "Please login to see this content"
+  "please_login": "Please login to see this content",
+  "Ooops! Something wrong": "Ooops! Something wrong",
+  "Unauthorized": "Unauthorized",
+  "Resource not found": "Resource not found",
+  "Username already used": "Username already used",
+  "User not exist": "User not exist",
+  "Password not correct": "Password not correct",
+  "Your account is currently locked": "Your account is currently locked"
 }

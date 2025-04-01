@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AdminPage from "./pages/admin/AdminPage";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const { themeMode } = useSelector((state) => state.themeMode);
@@ -72,6 +73,8 @@ const App = () => {
           </Route>
 
           <Route path="/admin" element={<AdminPage />} />
+
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
       {/* app routes */}

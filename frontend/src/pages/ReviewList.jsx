@@ -158,6 +158,7 @@ const ReviewList = () => {
     console.log({ newReviews });
     setReviews(newReviews);
     setFilteredReviews([...newReviews].splice(0, page * perPage));
+    setCount(count - 1);
   };
 
   return (

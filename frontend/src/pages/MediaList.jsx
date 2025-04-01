@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import usePrevious from "../hooks/usePrevious";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
+import PageNotFound from "./PageNotFound";
 
 const MediaList = () => {
   const { mediaType } = useParams();
@@ -73,7 +74,7 @@ const MediaList = () => {
       setCurrentPage(1);
     }
 
-    getMedias();
+    if (tmdbConfigs.mediaType.hasOwnProperty(mediaType)) getMedias();
   }, [
     mediaType,
     currentCategory,
@@ -93,6 +94,10 @@ const MediaList = () => {
   };
 
   const onLoadMore = () => setCurrentPage(currentPage + 1);
+
+  if (!tmdbConfigs.mediaType.hasOwnProperty(mediaType)) {
+    return <PageNotFound />;
+  }
 
   return (
     <>

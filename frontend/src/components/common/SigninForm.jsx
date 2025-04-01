@@ -106,7 +106,7 @@ const SigninForm = ({ switchAuthState }) => {
       {errorMessage && (
         <Box sx={{ marginTop: 2 }}>
           <Alert severity="warning" variant="outlined">
-            {errorMessage}
+            {t(errorMessage)}
           </Alert>
         </Box>
       )}

@@ -9,7 +9,7 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "react-toastify";
@@ -101,6 +101,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
   const [reviewCount, setReviewCount] = useState(0);
   const [loadingReviews, setLoadingReviews] = useState(false);
   const { t } = useTranslation();
+  const reviewContainerRef = useRef(null);
 
   const reviewPerPage = 4;
 
@@ -136,6 +137,13 @@ const MediaReview = ({ reviews, media, mediaType }) => {
       setFilteredReviews([...filteredReviews, response]);
       setReviewCount(reviewCount + 1);
       setContent("");
+
+      setTimeout(() => {
+        reviewContainerRef.current?.scrollTo({
+          top: reviewContainerRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }, 200);
     }
   };
 
@@ -165,6 +173,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
     <>
       <Container header={`${t("mediadetail.reviews")} (${reviewCount})`}>
         <Box
+          ref={reviewContainerRef}
           sx={{
             maxHeight: { xs: 400, md: 500 },
             overflowY: "auto",

@@ -1,12 +1,12 @@
 {
-  "name": "movie-steaming-2025",
+  "name": "movie-2025",
   "type": "module",
   "version": "0.0.1",
   "author": "nguyen dep trai",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "axios": "^1.7.9",

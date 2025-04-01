@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5001:50001"
+    networks:
+      - movie-app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8082:80"
+    networks:
+      - movie-app-network
+
+networks:
+  movie-app-network:
+    driver: bridge

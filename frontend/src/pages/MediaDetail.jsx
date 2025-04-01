@@ -29,6 +29,7 @@ import PosterSlide from "../components/common/PosterSlide";
 import RecommendSlide from "../components/common/RecommendSlide";
 import MediaSlide from "../components/common/MediaSlide";
 import MediaReview from "../components/common/MediaReview";
+import PageNotFound from "./PageNotFound";
 import { useTranslation } from "react-i18next";
 
 const MediaDetail = () => {
@@ -66,7 +67,8 @@ const MediaDetail = () => {
       if (error) toast.error(error.message);
     };
 
-    getMedia();
+    if (tmdbConfigs.mediaType.hasOwnProperty(mediaType) && !isNaN(mediaId))
+      getMedia();
   }, [mediaType, mediaId, dispatch, languageMode]);
 
   useEffect(() => {
@@ -132,6 +134,10 @@ const MediaDetail = () => {
       toast.success(t("success.delete_favorite"));
     }
   };
+
+  if (!tmdbConfigs.mediaType.hasOwnProperty(mediaType) || isNaN(mediaId)) {
+    return <PageNotFound />;
+  }
 
   return media ? (
     <>

@@ -1,0 +1,31 @@
+name: CI/CD Pipeline Movie
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd /home/${{ secrets.EC2_USER }}/mern-movie-trailer/
+            git pull origin main
+            sudo docker-compose -f docker-compose-movie.yml down --volumes --rmi all
+            sudo docker-compose -f docker-compose-movie.yml system prune -af
+            sudo docker-compose -f docker-compose-movie.yml up -d --build

@@ -105,5 +105,12 @@
     "sign_in": "Đăng nhập thành công",
     "sign_up": "Đăng ký thành công"
   },
-  "please_login": "Hãy đăng nhập để xem phần này"
+  "please_login": "Hãy đăng nhập để xem phần này",
+  "Ooops! Something wrong": "Có lỗi xảy ra",
+  "Unauthorized": "Truy cập bị từ chối",
+  "Resource not found": "Không tìm thấy",
+  "Username already used": "Tên đã tồn tại",
+  "User not exist": "Người dùng không tồn tại",
+  "Password not correct": "Sai mật khẩu",
+  "Your account is currently locked": "Tài khoản bị khóa"
 }
