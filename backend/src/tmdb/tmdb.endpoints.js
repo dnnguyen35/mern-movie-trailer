@@ -14,7 +14,8 @@ const tmdbEndpoints = {
     return tmdbConfig.getUrl(`${mediaType}/${mediaId}/credits`, {}, lang);
   },
   mediaVideos: ({ mediaType, mediaId }, lang) => {
-    return tmdbConfig.getUrl(`${mediaType}/${mediaId}/videos`, {}, lang);
+    const video_lang = "en";
+    return tmdbConfig.getUrl(`${mediaType}/${mediaId}/videos`, {}, video_lang);
   },
   mediaRecommend: ({ mediaType, mediaId }, lang) => {
     return tmdbConfig.getUrl(
@@ -24,7 +25,12 @@ const tmdbEndpoints = {
     );
   },
   mediaImages: ({ mediaType, mediaId }, lang) => {
-    return tmdbConfig.getUrl(`${mediaType}/${mediaId}/images`, {}, lang);
+    const include_image_language = lang === "en" ? "en,null" : "vi,null";
+    return tmdbConfig.getUrl(
+      `${mediaType}/${mediaId}/images`,
+      { include_image_language },
+      lang
+    );
   },
   mediaSearch: ({ mediaType, query, page }, lang) => {
     return tmdbConfig.getUrl(`search/${mediaType}`, { query, page }, lang);
